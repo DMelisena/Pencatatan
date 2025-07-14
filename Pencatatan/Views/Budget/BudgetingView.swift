@@ -79,20 +79,20 @@ struct BudgetingView: View {
                     emptyStateView
                 } else {
                     budgetListView
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button(action: {
+                                    selectedBudget = nil
+                                    selectedCategory = nil
+                                    showingAddBudgetSheet = true
+                                }) {
+                                    Image(systemName: "plus")
+                                }
+                            }
+                        }
                 }
             }
             .navigationTitle("Budgeting")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        selectedBudget = nil
-                        selectedCategory = nil
-                        showingAddBudgetSheet = true
-                    }) {
-                        Image(systemName: "plus")
-                    }
-                }
-            }
             .sheet(isPresented: $showingAddBudgetSheet, onDismiss: {
                 // Force a refresh of the fetch request
                 if let budget = selectedBudget {
