@@ -16,10 +16,28 @@ struct BudgetItem: Identifiable {
 struct InitBudgetView: View {
     let context: NSManagedObjectContext
     let categories: [ItemModelCategory]
-    @State private var budgetItems: [BudgetItem] = [BudgetItem()]
+    @State private var budgetItems: [BudgetItem]
     @State private var errorMessage: String? = nil
     @State private var totalBudget: String = "5000000" // Default value
     @Environment(\.presentationMode) var presentationMode
+
+    init(context: NSManagedObjectContext, categories: [ItemModelCategory]) {
+        self.context = context
+        self.categories = categories
+        
+        var initialItems: [BudgetItem] = []
+        // Pre-populate with the first 3 available categories
+        for i in 0..<min(categories.count, 3) {
+            initialItems.append(BudgetItem(category: categories[i]))
+        }
+        
+        // If there are fewer than 3 categories, add empty budget items up to 3
+        while initialItems.count < 3 {
+            initialItems.append(BudgetItem())
+        }
+        
+        self._budgetItems = State(initialValue: initialItems)
+    }
 
     var isFormValid: Bool {
         // Check if at least one budget item is valid
