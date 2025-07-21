@@ -64,8 +64,7 @@ struct InitBudgetView: View {
             Form {
                 Section(header: Text("Total Budget")) {
                     TextField("Total Budget", text: $totalBudget)
-                        .keyboardType(.decimalPad)
-                    
+                        .keyboardType(.numberPad)
                     Text("Remaining: \(remainingBudget, specifier: "%.0f")")
                         .foregroundColor(remainingBudget >= 0 ? .green : .red)
                         .font(.caption)
@@ -92,7 +91,7 @@ struct InitBudgetView: View {
                         }
 
                         TextField("Monthly Budget", text: $budgetItems[index].budgetAmount)
-                            .keyboardType(.decimalPad)
+                            .keyboardType(.numberPad)
                     }
                 }
 

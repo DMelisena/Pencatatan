@@ -41,11 +41,11 @@ To build and run the project, you will need Xcode and the Swift toolchain.
 ## To-Do List
 
 ### Record
-
-*   Income & expenses can't be added
+*   ~Income & expenses can't be added~
 *   Resolve app crash that occurs on refresh 
+```List failed to visit cell content, returning an empty cell. - SwiftUICore/Logging.swift:84 - please file a bug report.```
 ```(Thread 1: Fatal error: 'try!' expression unexpectedly raised an error: SwiftUI.AnyNavigationPath.Error.comparisonTypeMismatch).```
-*   Crash on related to the numpad appearing. ```(Thread 1: signal SIGTERM)```
+*   ~Crash on related to the numpad appearing.~ ```(Thread 1: signal SIGTERM)```
 
 ### Budgeting
 
